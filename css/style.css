@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-content: space-between;
+    font-family: Arial, sans-serif;
+    background-color: #676767;
+    text-align: center;
+    padding-top: 100px;
+  }
+  .container {
+    max-width: 800px;
+    min-width: 600px;
+    margin: 0, 0, auto;
+    background-color: #566adc;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0, 0, 10px rgba(0, 0, 0, 0.1);
+  }
+  .img {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-evenly;
+    width: 40%;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+  }
+  .picture1 {
+    max-width: 100%;
+  }
+  .picture2 {
+    max-width: 50%;
+  }
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  button:hover {
+    background-color: #5ade8a;
+    color: rgb(251, 4, 4);
+  }
+  
+.footer {
+    background: rgb(0, 0, 0);
+    color: #606060;
+    text-align: center;
+    padding: 10px;
+}
+.footer__container {
+    background: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer__texts {
+    width: 50%;
+    color: #fff6f6;
+}
+.footer__icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.footer__icon {
+    display: inline-block;
+    font-size: 2rem;
+    margin: 30px 30px;
+    text-decoration: none;
+    color: #ffffff;
+    margin-bottom: 10px;
+    width: 30px;
+}
+.footer__icon.fa {
+    line-height: 60px;
+}
+.footer__icon:hover {
+    background: #fff;
+    color: #f77062;
+    cursor: pointer;
+}
+.footer__link {
+    display: inline-block;
+    color: #fff;
+    margin: 15px 20px 0;
+}
+.footer__link:hover {
+    text-decoration: none;
+}
+.footer__img {
+    margin: 0;
+    width: 35%;
+}
+.footer__picture {
+    width: 30%;
+}

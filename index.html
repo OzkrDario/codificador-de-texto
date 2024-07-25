@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Encriptador y Desencriptador de Texto</title>
+
+</head>
+<body>
+  <figure class="img">
+    <img src="images/logo.jpg" alt="alura" class="picture1">
+    <img src="images/logo2.png" alt="html y css" class="picture2">
+  </figure>
+<div class="container">
+  <h2>Encriptador y Desencriptador de Texto</h2>  
+  <textarea id="inputText" placeholder="Ingresa el texto aquí..."></textarea><br>
+  <input type="radio" id="encryptOption" name="option" value="encrypt" checked>
+  <label for="encryptOption">Encriptar</label>
+  <input type="radio" id="decryptOption" name="option" value="decrypt">
+  <label for="decryptOption">Desencriptar</label><br><br>
+  <button onclick="convert()">Convertir</button><br><br>
+  <textarea id="outputText" placeholder="El resultado aparecerá aquí..." readonly></textarea><br>
+  <button onclick="copyToClipboard()">Copiar al Portapapeles</button>
+</div>
+
+<footer class="footer">
+  <div class="footer__container">
+      <div class="footer__texts">
+          <h2 class="title">Contacto</h2>
+          <div class="footer__icons">
+              <a href="https://www.linkedin.com/in/oscar-dar%C3%ADo-939b3a317/" class="footer__icon fab fa-linkedin"></a>
+              <a href="https://github.com/OzkrDario" class="footer__icon fab fa-github"></a>
+              
+          </div>
+
+          <nav class="footer__nav">
+              <a href="https://www.linkedin.com/in/oscar-dar%C3%ADo-939b3a317/" class="footer__link">LinkedIn</a>
+              <a href="https://github.com/OzkrDario" class="footer__link">GitHub</a>
+              
+          </nav>
+
+          <p class="footer__copy">Hecho por Oscar Darío</p>
+      </div>
+
+      <figure class="footer__img">
+          <img src="images/mail.svg" class="footer__picture">
+      </figure>
+  </div>
+</footer>
+
+<script>
+  function convert() {
+    var inputText = document.getElementById("inputText").value.trim();
+    var option = document.querySelector('input[name="option"]:checked').value;
+
+    if (option === "encrypt") {
+      var encryptedText = encryptText(inputText);
+      document.getElementById("outputText").value = encryptedText;
+    } else if (option === "decrypt") {
+      var decryptedText = decryptText(inputText);
+      document.getElementById("outputText").value = decryptedText;
+    }
+  }
+
+  function encryptText(text) {
+    var substitutions = {
+      'e': 'enter',
+      'i': 'imes',
+      'a': 'ai',
+      'o': 'ober',
+      'u': 'ufat'
+    };
+
+    
+    var encryptedText = '';
+    for (var i = 0; i < text.length; i++) {
+      var char = text[i];
+      if (substitutions[char]) {
+        encryptedText += substitutions[char];
+      } else {
+        encryptedText += char; 
+      }
+    }
+
+    return encryptedText;
+  }
+
+  function decryptText(text) {
+    
+    var reverseSubstitutions = {
+      'enter': 'e',
+      'imes': 'i',
+      'ai': 'a',
+      'ober': 'o',
+      'ufat': 'u'
+    };
+
+    
+    var encryptedWords = text.split(' ');
+
+    
+    var decryptedText = '';
+    for (var i = 0; i < encryptedWords.length; i++) {
+      var word = encryptedWords[i];
+
+      
+      var decryptedWord = '';
+      while (word.length > 0) {
+        var found = false;
+        for (var key in reverseSubstitutions) {
+          if (word.startsWith(key)) {
+            decryptedWord += reverseSubstitutions[key];
+            word = word.substring(key.length);
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          decryptedWord += word[0];
+          word = word.substring(1);
+        }
+      }
+
+      decryptedText += decryptedWord;
+
+      
+      if (i < encryptedWords.length - 1) {
+        decryptedText += ' ';
+      }
+    }
+
+    return decryptedText;
+  }
+
+  function copyToClipboard() {
+    var outputText = document.getElementById("outputText");
+    outputText.select();
+    outputText.setSelectionRange(0, 99999); 
+
+    document.execCommand("copy");
+    alert("¡Texto copiado al portapapeles!");
+  }
+</script>
+
+</body>
+</html>
